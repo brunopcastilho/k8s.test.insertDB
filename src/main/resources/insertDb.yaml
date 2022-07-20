@@ -1,0 +1,61 @@
+swagger: "2.0"
+info:
+  description: "insertDB"
+  version: "1.0.0"
+  title: "insertDB"
+host: "localhost"
+basePath: "/"
+schemes:
+- "https"
+- "http"
+paths:
+  /insertLog:
+    post:
+      tags:
+      - "insert"
+      operationId: "insertLog"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: insertDb
+          description: ''
+          schema:
+            $ref: '#/definitions/ApiModelRequest'
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiModelResponse"
+      security:
+        - basicAuth: []
+        
+
+
+securityDefinitions:
+  basicAuth:
+    type: "basic"
+
+definitions:
+  ApiModelResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      id:
+        type: "integer"
+      message:
+        type: "string"
+      dtLog:
+        type: "string"
+  
+  ApiModelRequest:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+
+  
